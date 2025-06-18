@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTM Strategy: U.S. Healthcare Practices</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- 
+    Chosen Palette: Brilliant Blues
+    Application Structure Plan: The SPA is a top-down narrative infographic that functions as a comprehensive GTM toolkit. It begins with the strategic foundation (Problem, ICP, Drivers, Personas, Funnel) and then provides four distinct AI-powered modules for execution: 1) A 'GTM Strategy Audit' to provide a SWOT analysis of the user's uploaded document. 2) The 'Messaging Assistant' for outbound content creation. 3) The 'Pain Point Analyzer' for inbound research. 4) The 'Tactic Brainstormer' for creative strategy expansion. This structure guides the user from understanding the strategy to actively applying and growing it.
+    Visualization & Content Choices: 
+    - Report Info: Financial loss stats -> Goal: Inform -> Viz/Method: 'Big Number' HTML cards -> Justification: High-impact attention grabber.
+    - Report Info: ICP criteria -> Goal: Organize -> Viz/Method: Styled HTML cards -> Justification: Clear segmentation.
+    - Report Info: 5 Revenue Drivers -> Goal: Compare -> Viz/Method: Chart.js Bar Chart -> Justification: Effective comparison of financial impact.
+    - Report Info: Key Personas -> Goal: Compare/Organize -> Viz/Method: Chart.js Donut Chart -> Justification: Shows audience focus.
+    - Report Info: GTM Funnel -> Goal: Organize -> Viz/Method: Structured HTML diagram -> Justification: Clear process flow without complex graphics.
+    - Report Info: GTM Strategy Document -> Goal: Analyze/Synthesize -> Viz/Method: New Gemini-powered SWOT analysis tool -> Justification: Provides high-level strategic insights on the user's own document with one click, removing the need for manual copy-pasting.
+    - Report Info: GTM Messaging Matrix -> Goal: Synthesize/Create -> Viz/Method: Gemini-powered form -> Justification: Generates actionable messaging from the strategic framework.
+    - Report Info: Discovery/Research Tactics -> Goal: Analyze/Synthesize -> Viz/Method: Gemini-powered text analysis tool -> Justification: Operationalizes research by turning raw text into structured insights.
+    - Report Info: Strategy Expansion -> Goal: Brainstorm/Create -> Viz/Method: Gemini-powered tactic generation tool -> Justification: Makes the GTM strategy dynamic by generating novel outreach ideas.
+    CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
+    -->
+    <style>
+        body {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            background-color: #F0F4F8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .flow-arrow {
+            font-size: 2rem;
+            line-height: 1;
+            color: #94a3b8;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #665191;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .tab-btn.active {
+            background-color: #003F5C;
+            color: white;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#003F5C] mb-2">The Healthcare Practice Growth Engine</h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-6">A visual guide to our Go-to-Market strategy for scaling high-volume U.S. healthcare practices.</p>
+            <a href="https://docs.google.com/document/d/1ubbkJbv-MM1vDd4Omt9UlHyTgSuuZouv8VQNmzyDFxg/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-[#003F5C] border border-[#003F5C] font-bold py-2 px-6 rounded-lg hover:bg-[#003F5C] hover:text-white transition duration-300">
+                View Full Playbook ↗
+            </a>
+        </header>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 text-[#2F4B7C]">The Multi-Million Dollar Leaks in Practice Operations</h2>
+            <p class="text-center max-w-2xl mx-auto text-gray-600 mb-10">Practices are losing significant revenue to hidden inefficiencies. We target these specific, high-impact areas.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-center">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-4xl font-bold text-[#FF7C43]">$300K+</p>
+                    <p class="mt-2 text-gray-600">Lost per Missed Provider Hire</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-4xl font-bold text-[#F95D6A]">$1M/yr</p>
+                    <p class="mt-2 text-gray-600">From just 0.5 More Encounters/Day</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-4xl font-bold text-[#D45087]">$400K/yr</p>
+                    <p class="mt-2 text-gray-600">Lost to Minor Coding Errors</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-4xl font-bold text-[#A05195]">$2M/yr</p>
+                    <p class="mt-2 text-gray-600">Lost to a 4-Min Encounter Delay</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 mb-16">
+            <div class="lg:col-span-2 bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-2xl font-bold mb-4 text-[#003F5C]">Our Ideal Customer Profile (ICP)</h3>
+                <p class="text-gray-600 mb-6">We focus on growth-oriented practices where operational complexity is a barrier to profitability.</p>
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <span class="text-xl mr-4">🎯</span>
+                        <div>
+                            <h4 class="font-semibold">Practice Size</h4>
+                            <p class="text-gray-600">4+ Physicians</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="text-xl mr-4">🏥</span>
+                        <div>
+                            <h4 class="font-semibold">Specialties</h4>
+                            <p class="text-gray-600">Ophthalmology, ENT, Derm, Ortho & other high-volume fields.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="text-xl mr-4">📈</span>
+                        <div>
+                            <h4 class="font-semibold">Structure</h4>
+                            <p class="text-gray-600">PE-backed or growth-focused Independent Practices.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:col-span-3 bg-white p-6 rounded-lg shadow-md">
+                 <h3 class="text-2xl font-bold mb-4 text-[#003F5C]">The 5 Key Revenue Drivers We Target</h3>
+                 <p class="text-gray-600 mb-6">Our entire strategy is built around solving problems related to these five core business drivers, each representing a significant opportunity for revenue capture.</p>
+                <div class="chart-container h-[320px] md:h-[350px]">
+                    <canvas id="driversChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+             <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-2xl font-bold mb-4 text-[#003F5C]">Who We Talk To: Key Personas</h3>
+                <p class="text-gray-600 mb-6">Our messaging is tailored to the unique pains and responsibilities of five key roles within a practice.</p>
+                <div class="chart-container h-[350px] md:h-[400px]">
+                    <canvas id="personasChart"></canvas>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                 <h3 class="text-2xl font-bold mb-4 text-[#003F5C]">Our Go-To-Market Funnel</h3>
+                <p class="text-gray-600 mb-6">We guide prospects through a strategic journey from awareness to consideration using targeted plays at each stage.</p>
+                <div class="space-y-4">
+                    <div class="bg-sky-50 p-4 rounded-lg border border-sky-200">
+                        <h4 class="font-bold text-lg text-sky-800">🥬 TOFU (Top of Funnel): Awareness</h4>
+                        <p class="text-sky-700 mt-1"><span class="font-semibold">Goal:</span> Build reach and curiosity by sharing insights and data.</p>
+                        <p class="text-sm text-gray-600 mt-2"><span class="font-semibold">Tactics:</span> Community Monitoring, Public Data Scraping, "Trojan Horse" Commenting.</p>
+                    </div>
+                    <div class="text-center flow-arrow">↓</div>
+                    <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200">
+                        <h4 class="font-bold text-lg text-indigo-800">🧀 MOFU (Middle of Funnel): Engagement</h4>
+                        <p class="text-indigo-700 mt-1"><span class="font-semibold">Goal:</span> Capture high-intent leads with valuable, interactive content.</p>
+                        <p class="text-sm text-gray-600 mt-2"><span class="font-semibold">Tactics:</span> Job Listing Scraping, Lead Magnet Traps, Free Tools/Calculators.</p>
+                    </div>
+                    <div class="text-center flow-arrow">↓</div>
+                    <div class="bg-rose-50 p-4 rounded-lg border border-rose-200">
+                        <h4 class="font-bold text-lg text-rose-800">🍖 BOFU (Bottom of Funnel): Consideration</h4>
+                        <p class="text-rose-700 mt-1"><span class="font-semibold">Goal:</span> Drive direct insight and conversion from qualified leads.</p>
+                        <p class="text-sm text-gray-600 mt-2"><span class="font-semibold">Tactics:</span> JTBD Interviews, Paid Expert Panels, Driver Maturity Walkthroughs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="bg-white p-6 md:p-8 rounded-lg shadow-md mb-16">
+            <h2 class="text-3xl font-bold text-center mb-4 text-[#2F4B7C]">✨ AI-Powered GTM Strategy Audit</h2>
+            <p class="text-center max-w-2xl mx-auto text-gray-600 mb-8">Click the button to perform a SWOT analysis on the core GTM strategy using key insights from the playbook.</p>
+            <div class="text-center">
+                <button id="audit-btn" class="bg-[#D45087] hover:bg-[#A05195] text-white font-bold py-3 px-6 rounded-md transition duration-300 text-lg">
+                    Audit My GTM Strategy
+                </button>
+            </div>
+            <div id="audit-result-container" class="mt-8 max-w-4xl mx-auto min-h-[200px] flex items-center justify-center">
+                <p class="text-gray-500">Your SWOT analysis will appear here...</p>
+            </div>
+        </section>
+
+        <section class="bg-white p-6 md:p-8 rounded-lg shadow-md mb-16">
+            <h2 class="text-3xl font-bold text-center mb-4 text-[#2F4B7C]">✨ AI-Powered Messaging Assistant</h2>
+            <p class="text-center max-w-2xl mx-auto text-gray-600 mb-8">Select a persona and a pain point to generate tailored marketing messages instantly.</p>
+            <div class="flex flex-col md:flex-row gap-4 mb-6 max-w-3xl mx-auto">
+                <div class="flex-1">
+                    <label for="persona-select-msg" class="block text-sm font-medium text-gray-700">Persona</label>
+                    <select id="persona-select-msg" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"></select>
+                </div>
+                <div class="flex-1">
+                    <label for="driver-select-msg" class="block text-sm font-medium text-gray-700">Revenue Driver</label>
+                    <select id="driver-select-msg" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"></select>
+                </div>
+                <button id="generate-btn" class="self-end bg-[#003F5C] hover:bg-[#2F4B7C] text-white font-bold py-2 px-4 rounded-md transition duration-300">
+                    Generate ✨
+                </button>
+            </div>
+            <div id="result-container" class="mt-6 max-w-3xl mx-auto min-h-[200px] flex items-center justify-center">
+                <p class="text-gray-500">Your generated messages will appear here...</p>
+            </div>
+        </section>
+        
+        <section class="bg-white p-6 md:p-8 rounded-lg shadow-md mb-16">
+            <h2 class="text-3xl font-bold text-center mb-4 text-[#2F4B7C]">✨ AI-Powered Pain Point Analyzer</h2>
+            <p class="text-center max-w-2xl mx-auto text-gray-600 mb-8">Paste text from a job description, forum comment, or review to identify the underlying strategic pain point.</p>
+            <div class="max-w-3xl mx-auto">
+                <textarea id="text-analyzer-input" class="w-full h-32 p-2 border border-gray-300 rounded-md" placeholder="Paste text here... e.g., 'Our biggest problem is claim denials and getting our coders timely feedback.'"></textarea>
+                <button id="analyze-btn" class="mt-4 bg-[#665191] hover:bg-[#A05195] text-white font-bold py-2 px-4 rounded-md transition duration-300">
+                    Analyze Text
+                </button>
+            </div>
+             <div id="analyzer-result-container" class="mt-6 max-w-3xl mx-auto min-h-[150px] flex items-center justify-center">
+                <p class="text-gray-500">Your analysis will appear here...</p>
+            </div>
+        </section>
+
+        <section class="bg-white p-6 md:p-8 rounded-lg shadow-md mb-16">
+            <h2 class="text-3xl font-bold text-center mb-4 text-[#2F4B7C]">✨ AI-Powered Tactic Brainstormer</h2>
+            <p class="text-center max-w-2xl mx-auto text-gray-600 mb-8">Stuck in a rut? Select a persona and driver to brainstorm new, creative outreach tactics.</p>
+             <div class="flex flex-col md:flex-row gap-4 mb-6 max-w-3xl mx-auto">
+                <div class="flex-1">
+                    <label for="persona-select-tactic" class="block text-sm font-medium text-gray-700">Persona</label>
+                    <select id="persona-select-tactic" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"></select>
+                </div>
+                <div class="flex-1">
+                    <label for="driver-select-tactic" class="block text-sm font-medium text-gray-700">Revenue Driver</label>
+                    <select id="driver-select-tactic" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"></select>
+                </div>
+                <button id="brainstorm-btn" class="self-end bg-[#FFA600] hover:bg-[#FF7C43] text-white font-bold py-2 px-4 rounded-md transition duration-300">
+                    Brainstorm Tactics
+                </button>
+            </div>
+             <div id="tactic-result-container" class="mt-6 max-w-3xl mx-auto min-h-[200px] flex items-center justify-center">
+                <p class="text-gray-500">Your brainstormed tactics will appear here...</p>
+            </div>
+        </section>
+
+        <footer class="text-center mt-12 pt-8 border-t border-gray-300">
+            <p class="font-bold text-xl text-[#003F5C]">Our Mission</p>
+            <p class="text-gray-600 max-w-2xl mx-auto mt-2">To give healthcare practices the real-time financial and operational visibility they need to scale profitability.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            const tooltipTitleCallback = function(tooltipItems) {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) { return label.join(' '); }
+                return label;
+            };
+            
+            const wrapLabel = (label) => {
+                const maxLength = 16;
+                if (label.length <= maxLength) return label;
+                const words = label.split(' ');
+                let lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + ' ' + word).trim().length > maxLength && currentLine.length > 0) {
+                        lines.push(currentLine.trim());
+                        currentLine = word;
+                    } else {
+                        currentLine = currentLine ? currentLine + ' ' + word : word;
+                    }
+                });
+                lines.push(currentLine.trim());
+                return lines;
+            };
+
+            const driversRawLabels = ['Provider Days', 'Encounters per Provider Day', 'Coding Accuracy', 'Reimbursement Rate', 'Cost of Care & Friction'];
+            const personasRawLabels = ['PE Practice Execs', 'Physician Owners', 'Practice Execs (CEO/Admin)', 'Revenue Cycle Managers', 'Ops/Capacity Managers'];
+            
+            Chart.defaults.font.family = "'Bricolage Grotesque', sans-serif";
+
+            new Chart(document.getElementById('driversChart').getContext('2d'), {
+                type: 'bar', data: { labels: driversRawLabels.map(wrapLabel), datasets: [{ label: 'Potential Annual Revenue Impact ($M)', data: [0.3, 1.0, 0.4, 3.5, 2.0], backgroundColor: ['#FFA600', '#FF7C43', '#F95D6A', '#D45087', '#A05195'], borderColor: '#ffffff', borderWidth: 2 }] },
+                options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { title: tooltipTitleCallback } } }, scales: { x: { beginAtZero: true, title: { display: true, text: 'Potential Annual Impact ($M)' } } } }
+            });
+
+            new Chart(document.getElementById('personasChart').getContext('2d'), {
+                type: 'doughnut', data: { labels: personasRawLabels.map(wrapLabel), datasets: [{ label: 'Focus of GTM Efforts', data: [20, 20, 20, 20, 20], backgroundColor: ['#003F5C', '#665191', '#A05195', '#F95D6A', '#FFA600'], hoverOffset: 4 }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' }, tooltip: { callbacks: { title: tooltipTitleCallback } } } }
+            });
+            
+            const personaSelectMsg = document.getElementById('persona-select-msg');
+            const driverSelectMsg = document.getElementById('driver-select-msg');
+            const personaSelectTactic = document.getElementById('persona-select-tactic');
+            const driverSelectTactic = document.getElementById('driver-select-tactic');
+
+            personasRawLabels.forEach(p => {
+                personaSelectMsg.appendChild(new Option(p, p));
+                personaSelectTactic.appendChild(new Option(p, p));
+            });
+            driversRawLabels.forEach(d => {
+                driverSelectMsg.appendChild(new Option(d, d));
+                driverSelectTactic.appendChild(new Option(d, d));
+            });
+
+            const generateBtn = document.getElementById('generate-btn');
+            const resultContainer = document.getElementById('result-container');
+            generateBtn.addEventListener('click', async () => {
+                const persona = personaSelectMsg.value;
+                const driver = driverSelectMsg.value;
+                resultContainer.innerHTML = '<div class="loader mx-auto"></div>';
+                generateBtn.disabled = true; generateBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                const prompt = `You are an expert GTM strategist for healthcare tech. Generate a set of marketing messages targeting a '${persona}' who is struggling with '${driver}'. Provide three distinct message types: 1. A compelling email subject line and a 2-sentence hook. 2. A short, punchy social media post for LinkedIn. 3. A 1-sentence opening line for a cold call.`;
+                const payload = {
+                  contents: [{ role: "user", parts: [{ text: prompt }] }],
+                  generationConfig: { responseMimeType: "application/json", responseSchema: { type: "OBJECT", properties: { email: { type: "OBJECT", properties: { subject: { "type": "STRING" }, body: { "type": "STRING" }}}, social: { "type": "STRING" }, cold_call: { "type": "STRING" }}}}
+                };
+                try {
+                    const { data } = await callGeminiApi(payload);
+                    displayMessagingResults(data);
+                } catch (error) {
+                    resultContainer.innerHTML = `<p class="text-red-500 text-center">Sorry, we couldn't generate messages at this time. Please try again later.</p>`;
+                } finally {
+                    generateBtn.disabled = false; generateBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+            });
+
+            function displayMessagingResults(data) {
+                resultContainer.innerHTML = `<div class="w-full"><div class="border-b border-gray-200"><nav class="-mb-px flex space-x-4" aria-label="Tabs"><button class="tab-btn active whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm" data-tab="email">Email</button><button class="tab-btn whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm" data-tab="social">Social</button><button class="tab-btn whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm" data-tab="cold_call">Call</button></nav></div><div class="py-4"><div id="email-content" class="tab-content"><h4 class="font-semibold text-gray-700">Subject:</h4><p class="mb-4 p-2 bg-gray-100 rounded">${data.email.subject}</p><h4 class="font-semibold text-gray-700">Body Hook:</h4><p class="p-2 bg-gray-100 rounded">${data.email.body}</p></div><div id="social-content" class="tab-content hidden"><h4 class="font-semibold text-gray-700">LinkedIn Post:</h4><p class="p-2 bg-gray-100 rounded">${data.social}</p></div><div id="cold_call-content" class="tab-content hidden"><h4 class="font-semibold text-gray-700">Opening Line:</h4><p class="p-2 bg-gray-100 rounded">${data.cold_call}</p></div></div></div>`;
+                setupTabs(resultContainer);
+            }
+
+            const analyzeBtn = document.getElementById('analyze-btn');
+            const textInput = document.getElementById('text-analyzer-input');
+            const analyzerResultContainer = document.getElementById('analyzer-result-container');
+            analyzeBtn.addEventListener('click', async () => {
+                if (!textInput.value.trim()) { analyzerResultContainer.innerHTML = `<p class="text-yellow-600">Please enter some text to analyze.</p>`; return; }
+                analyzerResultContainer.innerHTML = '<div class="loader mx-auto"></div>';
+                analyzeBtn.disabled = true; analyzeBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                const prompt = `Analyze the following text from a healthcare context: "${textInput.value}". Identify the most likely persona from this list: [${personasRawLabels.join(', ')}]. Then, identify the most relevant revenue driver from this list: [${driversRawLabels.join(', ')}]. Provide a brief justification for your choices.`;
+                const payload = {
+                    contents: [{ role: "user", parts: [{ text: prompt }] }],
+                    generationConfig: { responseMimeType: "application/json", responseSchema: { type: "OBJECT", properties: { persona: { "type": "STRING" }, driver: { "type": "STRING" }, justification: { "type": "STRING" } } } }
+                };
+                try {
+                    const { data } = await callGeminiApi(payload);
+                    analyzerResultContainer.innerHTML = `<div class="w-full bg-gray-50 p-4 rounded-lg border"><div class="mb-3"><h4 class="text-sm font-semibold text-gray-500">Detected Persona</h4><p class="text-lg font-bold text-[#003F5C]">${data.persona}</p></div><div class="mb-3"><h4 class="text-sm font-semibold text-gray-500">Detected Revenue Driver</h4><p class="text-lg font-bold text-[#665191]">${data.driver}</p></div><div><h4 class="font-semibold text-gray-500">Justification</h4><p class="text-gray-700">${data.justification}</p></div></div>`;
+                } catch (error) {
+                    analyzerResultContainer.innerHTML = `<p class="text-red-500 text-center">Sorry, we couldn't analyze the text at this time. Please try again.</p>`;
+                } finally {
+                    analyzeBtn.disabled = false; analyzeBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+            });
+
+            const brainstormBtn = document.getElementById('brainstorm-btn');
+            const tacticResultContainer = document.getElementById('tactic-result-container');
+            brainstormBtn.addEventListener('click', async () => {
+                const persona = personaSelectTactic.value;
+                const driver = driverSelectTactic.value;
+                tacticResultContainer.innerHTML = '<div class="loader mx-auto"></div>';
+                brainstormBtn.disabled = true; brainstormBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                const prompt = `You are an expert GTM strategist specializing in healthcare tech. Brainstorm 3 creative and actionable outreach tactics to engage a '${persona}' who is concerned about '${driver}'. For each tactic, provide a name and a brief description of how to execute it.`;
+                const payload = {
+                  contents: [{ role: "user", parts: [{ text: prompt }] }],
+                  generationConfig: { responseMimeType: "application/json", responseSchema: { type: "ARRAY", items: { type: "OBJECT", properties: { tactic_name: { "type": "STRING" }, description: { "type": "STRING" } } } } }
+                };
+                 try {
+                    const { data } = await callGeminiApi(payload);
+                    displayTacticResults(data);
+                } catch (error) {
+                    tacticResultContainer.innerHTML = `<p class="text-red-500 text-center">Sorry, we couldn't brainstorm tactics at this time. Please try again later.</p>`;
+                } finally {
+                    brainstormBtn.disabled = false; brainstormBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+            });
+
+            function displayTacticResults(tactics) {
+                let html = '<div class="space-y-4 w-full">';
+                if (Array.isArray(tactics)) {
+                    tactics.forEach(tactic => {
+                        if (tactic && tactic.tactic_name && tactic.description) {
+                             html += `<div class="p-4 bg-gray-50 rounded-lg border"><h4 class="font-bold text-md text-[#003F5C]">${tactic.tactic_name}</h4><p class="text-gray-700 text-sm mt-1">${tactic.description}</p></div>`;
+                        }
+                    });
+                }
+                html += '</div>';
+                tacticResultContainer.innerHTML = html;
+            }
+
+            const auditBtn = document.getElementById('audit-btn');
+            const auditResultContainer = document.getElementById('audit-result-container');
+            auditBtn.addEventListener('click', async () => {
+                auditResultContainer.innerHTML = '<div class="loader mx-auto"></div>';
+                auditBtn.disabled = true; auditBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                
+                const gtmSummary = `Our GTM strategy targets high-volume healthcare practices, focusing on personas like PE Execs, Physician Owners, and RCMs. We address 5 key revenue drivers: Provider Days, Encounters, Coding, Reimbursement, and Cost of Care. Our funnel uses tactics like community monitoring (TOFU), lead magnets (MOFU), and driver maturity walkthroughs (BOFU).`;
+
+                const prompt = `Based on the following summary of a Go-to-Market strategy for a healthcare tech company, perform a SWOT analysis. Provide one key point for each category (Strengths, Weaknesses, Opportunities, Threats).`;
+                const payload = {
+                  contents: [{ role: "user", parts: [{ text: prompt }] }],
+                  generationConfig: { responseMimeType: "application/json", responseSchema: { type: "OBJECT", properties: {
+                      strengths: { type: "STRING" }, weaknesses: { type: "STRING" }, opportunities: { type: "STRING" }, threats: { type: "STRING" }
+                  }}}
+                };
+                 try {
+                    const { data } = await callGeminiApi(payload);
+                    displayAuditResults(data);
+                } catch (error) {
+                    auditResultContainer.innerHTML = `<p class="text-red-500 text-center">Sorry, we couldn't perform the audit at this time. Please try again.</p>`;
+                } finally {
+                    auditBtn.disabled = false; auditBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+            });
+
+            function displayAuditResults(data) {
+                auditResultContainer.innerHTML = `
+                    <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+                            <h4 class="font-bold text-lg text-green-800">Strengths 💪</h4>
+                            <p class="text-gray-700 mt-1">${data.strengths}</p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 p-4 rounded-lg">
+                            <h4 class="font-bold text-lg text-red-800">Weaknesses 🧐</h4>
+                            <p class="text-gray-700 mt-1">${data.weaknesses}</p>
+                        </div>
+                        <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+                            <h4 class="font-bold text-lg text-blue-800">Opportunities 🚀</h4>
+                            <p class="text-gray-700 mt-1">${data.opportunities}</p>
+                        </div>
+                        <div class="bg-yellow-50 border border-yellow-200 p-4 rounded-lg">
+                            <h4 class="font-bold text-lg text-yellow-800">Threats ⚠️</h4>
+                            <p class="text-gray-700 mt-1">${data.threats}</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+
+            function setupTabs(container) {
+                const tabs = container.querySelectorAll('.tab-btn');
+                const contents = container.querySelectorAll('.tab-content');
+                if (tabs.length === 0) return;
+                
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', (e) => {
+                        tabs.forEach(t => t.classList.remove('active'));
+                        e.target.classList.add('active');
+                        const target = e.target.getAttribute('data-tab');
+                        contents.forEach(content => {
+                            const contentTab = content.id.replace('-content', '');
+                            if (contentTab === target) {
+                                content.classList.remove('hidden');
+                            } else {
+                                content.classList.add('hidden');
+                            }
+                        });
+                    });
+                });
+            }
+            
+            async function callGeminiApi(payload) {
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (!response.ok) { throw new Error(`API error: ${response.statusText}`); }
+                const result = await response.json();
+                if (result.candidates && result.candidates[0].content && result.candidates[0].content.parts[0].text) {
+                    const rawJson = result.candidates[0].content.parts[0].text;
+                    try {
+                        return { data: JSON.parse(rawJson) };
+                    } catch (e) {
+                         console.error("JSON parsing error:", e);
+                         return { data: [{ tactic_name: "Raw AI Response", description: rawJson }] };
+                    }
+                } else {
+                    console.error("Invalid API response structure:", result);
+                    throw new Error("Invalid response structure from API.");
+                }
+            }
+        });
+    </script>
+</body>
+</html>
