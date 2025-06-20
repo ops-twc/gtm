@@ -461,8 +461,10 @@
             }
             
             async function callGeminiApi(payload) {
-                const apiKey = "";
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                // IMPORTANT: Replace "YOUR_API_KEY" with your actual Google AI API key.
+                // You can get a key from https://aistudio.google.com/app/apikey
+                const apiKey = "AIzaSyB5i5BfBsH8H0NF1TXM1J0A9Hnz_3iZR0A";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
                 const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -486,4 +488,4 @@
         });
     </script>
 </body>
-</html>
+</html> 
